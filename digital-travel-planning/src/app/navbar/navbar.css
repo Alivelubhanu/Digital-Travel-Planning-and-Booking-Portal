@@ -1,13 +1,56 @@
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
-  background-color: #0b2c4d;
+  background: rgba(11, 44, 77, 0.85);
+  backdrop-filter: blur(8px);
   color: white;
 }
 
-.menu {
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Menu */
+.nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 30px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  position: relative;
+}
+
+/* underline hover effect */
+.nav-links li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #3ccfcf;
+  transition: 0.3s;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+/* Button */
+.nav-btn {
+  padding: 10px 20px;
+  background: #3ccfcf;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
 }
