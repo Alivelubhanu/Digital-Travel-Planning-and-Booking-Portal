@@ -9,4 +9,9 @@ import { Navbar } from '../navbar/navbar';
 })
 export class Home {
 
+  scrollToDestinations() {
+    const section = document.getElementById('destinations');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  }
+
 }
