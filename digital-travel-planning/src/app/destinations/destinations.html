@@ -1,0 +1,14 @@
+<div class="destinations-page">
+  <h1>Popular Destinations</h1>
+
+  <div class="destinations-grid">
+    <div
+      class="destination-card"
+      *ngFor="let place of destinations"
+    >
+      <img [src]="place.image" />
+      <h3>{{ place.name }}</h3>
+      <p>{{ place.description }}</p>
+    </div>
+  </div>
+</div>

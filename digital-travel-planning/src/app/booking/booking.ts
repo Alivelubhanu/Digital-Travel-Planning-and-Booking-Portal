@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-booking',
   imports: [],
   templateUrl: './booking.html',
-  styleUrl: './booking.css',
+  styleUrls: ['./booking.css'],
 })
 export class Booking {
 
