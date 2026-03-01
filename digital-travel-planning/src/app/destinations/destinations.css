@@ -18,16 +18,17 @@
 /* card styling */
 .destination-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  transition: all 0.35s ease;
   cursor: pointer;
+  position: relative;
 }
 
 .destination-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.25);
 }
 
 .destination-card img {
@@ -43,4 +44,47 @@
 .destination-card p {
   padding: 0 12px 16px;
   color: #555;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.controls input,
+.controls select {
+  padding: 12px 16px;
+  border-radius: 25px;
+  border: 1px solid #d0d0d0;
+  font-size: 15px;
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 768px) {
+
+  .destinations-page {
+    padding: 40px 20px;
+  }
+
+  .destinations-page h1 {
+    font-size: 28px;
+  }
+
+  .destination-card img {
+    height: 160px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .controls input,
+  .controls select {
+    width: 100%;
+    max-width: 320px;
+  }
 }

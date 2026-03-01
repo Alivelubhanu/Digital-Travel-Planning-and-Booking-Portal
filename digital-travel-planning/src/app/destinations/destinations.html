@@ -1,12 +1,32 @@
 <div class="destinations-page">
   <h1>Popular Destinations</h1>
 
+  <div class="controls">
+
+    <!-- 🔍 SEARCH -->
+    <input
+      type="text"
+      placeholder="Search destinations..."
+      [(ngModel)]="searchText"
+      (input)="applyFilters()"
+    />
+
+    <!-- 🎯 FILTER -->
+    <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+      <option value="">All Categories</option>
+      <option value="City">City</option>
+      <option value="Beach">Beach</option>
+      <option value="Culture">Culture</option>
+    </select>
+
+  </div>
+
   <div class="destinations-grid">
     <div
       class="destination-card"
-      *ngFor="let place of destinations"
+      *ngFor="let place of filteredDestinations"
     >
-      <img [src]="place.image" />
+      <img [src]="place.image" loading="lazy" />
       <h3>{{ place.name }}</h3>
       <p>{{ place.description }}</p>
     </div>
