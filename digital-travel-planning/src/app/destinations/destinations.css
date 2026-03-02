@@ -1,3 +1,119 @@
+/* ===== HERO SECTION ===== */
+
+.dest-hero {
+  height: 300px;
+  background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop')
+    center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  text-align: center;
+  color: white;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)
+  );
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hero-tag {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.hero-overlay h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.hero-sub {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+/* ===== FILTER BAR PREMIUM ===== */
+
+.filters-wrapper {
+  margin: -50px auto 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 1100px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* SEARCH */
+
+.search-box {
+  flex: 1;
+  min-width: 260px;
+  max-width: 500px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 16px 14px 40px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+}
+
+/* FILTER RIGHT */
+
+.filters-right {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.filter-group select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  background: white;
+}
+
 .destinations-page {
   padding: 60px 40px;
   text-align: center;
@@ -5,14 +121,17 @@
 
 .destinations-page h1 {
   font-size: 36px;
+  margin-top: 40px;
   margin-bottom: 30px;
 }
 
 /* responsive grid */
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  gap: 24px;
+  margin-top: 30px;
+  justify-content: center; /* ⭐ important */
 }
 
 /* card styling */
@@ -87,4 +206,30 @@
     width: 100%;
     max-width: 320px;
   }
+}
+/* ⭐ results count text */
+.results-count {
+  margin: 10px auto 20px;
+  color: #6b7280;
+  font-weight: 500;
+  max-width: 1100px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+/* ⭐ star rating */
+.rating {
+  margin-top: 8px;
+  padding: 0 12px 16px;
+  display: flex;
+  gap: 3px;
+}
+
+.star {
+  color: #d1d5db;
+  font-size: 18px;
+}
+
+.star.filled {
+  color: #f59e0b;
 }

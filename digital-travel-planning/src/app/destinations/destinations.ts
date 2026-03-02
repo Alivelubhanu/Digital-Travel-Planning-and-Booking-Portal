@@ -17,16 +17,23 @@ export class DestinationsComponent {
   searchText = '';
   selectedCategory = '';
 
+  get resultsCount(): number {
+  return this.filteredDestinations.length;
+}
+
   applyFilters() {
-    this.filteredDestinations = this.destinations.filter(place => {
-      const matchesSearch =
-        place.name.toLowerCase().includes(this.searchText.toLowerCase());
+  this.filteredDestinations = this.destinations.filter(place => {
 
-      const matchesCategory =
-        this.selectedCategory === '' ||
-        place.category === this.selectedCategory;
+    const matchesSearch =
+      place.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      place.description.toLowerCase().includes(this.searchText.toLowerCase());
 
-      return matchesSearch && matchesCategory;
+    const matchesCategory =
+      this.selectedCategory === 'All' ||
+      place.category === this.selectedCategory;
+
+    return matchesSearch && matchesCategory;
+    
     });
   }
 } 

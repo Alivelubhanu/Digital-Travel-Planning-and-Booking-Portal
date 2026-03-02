@@ -1,25 +1,62 @@
+<section class="dest-hero">
+  <div class="hero-overlay">
+    <p class="hero-tag">EXPLORE THE WORLD</p>
+    <h1>Discover Your Next Adventure</h1>
+    <p class="hero-sub">
+      From bustling cities to serene beaches and majestic mountains —
+      find the perfect destination for your journey.
+    </p>
+  </div>
+</section>
+
 <div class="destinations-page">
   <h1>Popular Destinations</h1>
 
-  <div class="controls">
+  <section class="filters-wrapper">
+    <!-- SEARCH -->
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        placeholder="Search by name or description..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()"
+      />
+    </div>
 
-    <!-- 🔍 SEARCH -->
-    <input
-      type="text"
-      placeholder="Search destinations..."
-      [(ngModel)]="searchText"
-      (input)="applyFilters()"
-    />
+    <!-- FILTERS -->
+    <div class="filters-right">
+      <div class="filter-group">
+        <label>TYPE</label>
+        <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+          <option value="All">All Types</option>
+          <option value="City">City</option>
+          <option value="Beach">Beach</option>
+          <option value="Culture">Culture</option>
+          <option value="Nature">Nature</option>
+        </select>
+      </div>
 
-    <!-- 🎯 FILTER -->
-    <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
-      <option value="">All Categories</option>
-      <option value="City">City</option>
-      <option value="Beach">Beach</option>
-      <option value="Culture">Culture</option>
-    </select>
+      <div class="filter-group">
+        <label>POPULARITY</label>
+        <select>
+          <option>All Popularity</option>
+        </select>
+      </div>
 
-  </div>
+      <div class="filter-group">
+        <label>SORT BY</label>
+        <select>
+          <option>Recommended</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐⭐⭐ MOVE RESULTS COUNT HERE ⭐⭐⭐ -->
+  <p class="results-count">
+    {{ resultsCount }} destinations found
+  </p>
 
   <div class="destinations-grid">
     <div
@@ -29,6 +66,14 @@
       <img [src]="place.image" loading="lazy" />
       <h3>{{ place.name }}</h3>
       <p>{{ place.description }}</p>
+
+      <!-- ⭐⭐⭐ ADD STARS HERE ⭐⭐⭐ -->
+      <div class="rating">
+        <span *ngFor="let star of [1,2,3,4,5]">
+          <i class="star" [class.filled]="star <= place.rating">★</i>
+        </span>
+      </div>
+
     </div>
   </div>
 </div>
