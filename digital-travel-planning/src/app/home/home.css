@@ -1,22 +1,28 @@
+/* HERO SECTION */
+
 .hero {
   position: relative;
-  height: 95vh;
-  background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+  height: 90vh;
+  width: 100%;
+  background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2000&q=60');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Dark overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: linear-gradient(
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.35)
+  );
 }
 
-/* Content */
 .hero-content {
   position: relative;
   text-align: center;
@@ -26,9 +32,9 @@
 }
 
 .hero-content h1 {
-  font-size: 52px;
-  font-weight: 700;
-  margin-bottom: 15px;
+  font-size: 64px;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
@@ -37,56 +43,131 @@
   opacity: 0.9;
 }
 
-/* Button */
-.hero-btn {
-  padding: 14px 32px;
-  background: linear-gradient(135deg, #3ccfcf, #2aa9a9);
-  color: #0b2c4d;
-  border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* Buttons */
+
+.hero-buttons{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  margin-top:25px;
 }
 
-.hero-btn:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+/* Book Tour Button */
+.btn-primary{
+  display:inline-block;
+  padding:14px 32px;
+  background:#2ea6df;
+  color:white;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  box-shadow:0 8px 18px rgba(0,0,0,0.3);
+  text-decoration:none;
 }
 
-.destinations {
-  padding: 60px 40px;
-  text-align: center;
-  background: #f5f7fa;
+.btn-primary:hover{
+  background:#1c8ec7;
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px rgba(0,0,0,0.4);
 }
 
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
+/* Explore Destinations Button */
+.btn-secondary{
+  display:inline-block;
+  padding:14px 32px;
+  background:transparent;
+  color:white;
+  border:2px solid rgba(255,255,255,0.8);
+  border-radius:30px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  text-decoration:none;
 }
 
-.card {
-  width: 280px;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: all 0.35s ease;
-  cursor: pointer;
+.btn-secondary:hover{
+  background:rgba(255,255,255,0.15);
+  border-color:white;
 }
 
-.card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+/* rest of page styles (destinations, cards, activities, footer) */
+.destinations{
+  padding: 80px 40px;
+  background:#f5f7fa;
+  text-align:center;
 }
 
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.section-title{
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:40px;
+}
+
+/* cards container */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  justify-items:center;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* card */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+  justify-content:center;
+  max-width:1100px;
+  margin:0 auto;
+}
+.card{
+  width:250px;
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  transition:all 0.3s ease;
+}
+
+/* image */
+
+.card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+.card-body{
+  padding:16px;
+  text-align:center;
+}
+
+/* text section */
+
+.card h3 {
+  padding: 16px 16px 0 16px;
+  margin: 0 0 6px 0;
+  font-size: 20px;
+}
+
+.card p {
+  padding: 0 16px 16px 16px;
+  margin: 0;
+  color: #6b7280;
+}
+
+/* hover effect */
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.18);
 }
 
 .activities {
@@ -223,4 +304,18 @@
 
 .hero-content {
   animation: fadeUp 1s ease-out;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .hero-content h1 { font-size: 36px; }
+  .hero-subtitle { font-size: 15px; }
+  .filter-bar { padding: 10px; gap: 8px; }
+}
+
+@media (max-width: 520px) {
+  .hero { height: 64vh; min-height: 420px; }
+  .hero-content h1 { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .filter-bar { flex-direction: column; align-items: stretch; }
 }

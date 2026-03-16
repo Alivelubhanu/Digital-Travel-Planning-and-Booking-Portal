@@ -75,3 +75,6 @@
 .footer-col li {
   margin-bottom: 8px;
 }
+body {
+  font-family: 'Inter', sans-serif;
+}

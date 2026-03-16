@@ -1,0 +1,52 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-icon">✈️</div>
+    <h2>Create an Account</h2>
+    <p>Sign up to start booking your adventures</p>
+
+    <form (ngSubmit)="onSignup()" #signupForm="ngForm">
+      <label>Full Name</label>
+      <input 
+        name="fullName" 
+        [(ngModel)]="fullName" 
+        required 
+        placeholder="John Doe" 
+      />
+
+      <label>Email</label>
+      <input 
+        name="email" 
+        [(ngModel)]="email" 
+        required 
+        type="email"
+        placeholder="you@example.com" 
+      />
+
+      <label>Password</label>
+      <input 
+        type="password" 
+        name="password" 
+        [(ngModel)]="password" 
+        required 
+        minlength="6" 
+        placeholder="Minimum 6 characters" 
+      />
+
+      <label>Confirm Password</label>
+      <input 
+        type="password" 
+        name="confirmPassword" 
+        [(ngModel)]="confirmPassword" 
+        required 
+        placeholder="Confirm Password" 
+      />
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+      <button class="signup-btn" type="submit">Sign Up</button>
+    </form>
+
+    <p class="signin-text">Already have an account? <a routerLink="/login">Sign In</a></p>
+  </div>
+</div>

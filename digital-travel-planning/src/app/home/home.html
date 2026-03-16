@@ -1,63 +1,100 @@
-<div id="home" class="hero">
+<section class="hero">
+
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <h1>Discover Your Next Adventure</h1>
-    <p>Explore destinations, activities & book unforgettable tours.</p>
-    <button class="hero-btn" (click)="scrollToDestinations()">
-      Explore Now
-    </button>
-  </div>
-</div>
 
-<section id="destinations" class="destinations">
+    <h1>Discover Your Next Adventure</h1>
+
+    <p>
+      Explore breathtaking destinations, plan unforgettable trips,
+      and book curated tours — all in one place.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a routerLink="/booking" class="btn-primary">
+        Book a Tour →
+      </a>
+
+      <a routerLink="/destinations" class="btn-secondary">
+        Explore Destinations
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="destinations">
+
   <h2>Popular Destinations</h2>
 
   <div class="cards">
+
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" />
-      <h3>Paris</h3>
-      <p>City of love and lights</p>
+      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34">
+      <div class="card-body">
+        <h3>Paris</h3>
+        <p>City of love and lights</p>
+      </div>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" />
-      <h3>Maldives</h3>
-      <p>Luxury island getaway</p>
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+      <div class="card-body">
+        <h3>Maldives</h3>
+        <p>Luxury island getaway</p>
+      </div>
     </div>
+    <div class="card">
+  <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c">
+  <div class="card-body">
+    <h3>Dubai</h3>
+    <p>Modern desert paradise</p>
+  </div>
+</div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1" />
-      <h3>India</h3>
-      <p>Culture and heritage</p>
+      <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da">
+      <div class="card-body">
+        <h3>India</h3>
+        <p>Culture and heritage</p>
+      </div>
     </div>
+
   </div>
 </section>
 
-<section id="activities" class="activities">
+<section class="activities">
+
   <h2>Top Activities</h2>
 
   <div class="activity-cards">
+
     <div class="activity-card">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
       <h3>Beach Tours</h3>
     </div>
 
     <div class="activity-card">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <h3>Adventure Trips</h3>
     </div>
 
     <div class="activity-card">
-      <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1" />
+      <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b">
       <h3>Cultural Tours</h3>
     </div>
 
     <div class="activity-card">
-      <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4" />
+      <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4">
       <h3>Cruise Trips</h3>
     </div>
+
   </div>
+
 </section>
 
 <section class="book-tour">

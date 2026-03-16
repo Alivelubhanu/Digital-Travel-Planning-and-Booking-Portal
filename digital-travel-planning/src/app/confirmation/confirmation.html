@@ -1,0 +1,77 @@
+<div class="confirmation-container">
+  <div class="confirmation-header">
+    <h1>Booking Confirmed! 🎉</h1>
+    <p>Your trip has been successfully booked. Here are your booking details:</p>
+  </div>
+
+  <div class="confirmation-card">
+    <div class="booking-summary">
+      <h2>Booking Summary</h2>
+
+      <div class="summary-section">
+        <h3>User Information</h3>
+        <div class="summary-item">
+          <span class="label">Full Name:</span>
+          <span class="value">{{ bookingData.username }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Email:</span>
+          <span class="value">{{ bookingData.email }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Destination:</span>
+          <span class="value">{{ bookingData.destination }}</span>
+        </div>
+      </div>
+
+      <div class="summary-section">
+        <h3>Trip Details</h3>
+        <div class="summary-item">
+          <span class="label">Number of Members:</span>
+          <span class="value">{{ bookingData.members }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Number of Days:</span>
+          <span class="value">{{ bookingData.days }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Nights:</span>
+          <span class="value">{{ bookingData.nights }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Food Preference:</span>
+          <span class="value">{{ bookingData.foodPreference }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Beds:</span>
+          <span class="value">{{ bookingData.beds }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Rooms:</span>
+          <span class="value">{{ bookingData.rooms }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Travel Mode:</span>
+          <span class="value">{{ bookingData.travelMode }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Travel Date:</span>
+          <span class="value">{{ formatDate(bookingData.travelDate) }}</span>
+        </div>
+      </div>
+
+      <div class="summary-section total-section">
+        <h3>Amount Summary</h3>
+        <div class="summary-item total-item">
+          <span class="label">Total Amount:</span>
+          <span class="value total-amount">₹{{ bookingData.totalPrice?.toLocaleString('en-IN') }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="confirmation-actions">
+      <button class="download-btn" (click)="downloadPDF()">Download PDF Itinerary</button>
+      <button class="back-btn" routerLink="/">Back to Home</button>
+    </div>
+  </div>
+</div>

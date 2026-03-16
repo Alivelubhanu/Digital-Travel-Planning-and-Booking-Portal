@@ -1,32 +1,28 @@
 <nav class="navbar">
+
+  <!-- Logo -->
   <div class="logo">
-    🌍 TravelExplorer
+    ✈️ <span class="brand-text">TravelVista</span>
   </div>
 
+  <!-- Navigation -->
   <ul class="nav-links">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="destinations">Destinations</a></li>
-    <li><a routerLink="activities">Activities</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+  <li><a routerLink="/destinations" routerLinkActive="active">Destinations</a></li>
+  <li><a routerLink="/booking" routerLinkActive="active">Book a Tour</a></li>
+  <li><a routerLink="/" [fragment]="'contact'">Contact</a></li>
+</ul>
 
+  <!-- Right Section -->
   <div class="auth-section">
-
-  <!-- 🔍 Small Search -->
-  <div class="nav-search">
-    <span class="nav-search-icon">🔍</span>
-    <input
-      type="text"
-      placeholder="Search..."
-      class="nav-search-input"
-    />
+    <ng-container *ngIf="!auth.isLoggedIn(); else loggedIn">
+      <a routerLink="/login" class="signin-btn">Sign In</a>
+      <button class="signup-btn">Sign Up</button>
+    </ng-container>
+    <ng-template #loggedIn>
+      <span class="welcome-text">Hello, {{ auth.getCurrentUser()?.fullName }}</span>
+      <button class="signin-btn" (click)="logout()">Logout</button>
+    </ng-template>
   </div>
 
-  <!-- 🔐 Auth buttons -->
-  <div class="auth-buttons">
-    <button class="login-btn">Login</button>
-    <button class="signup-btn">Sign Up</button>
-  </div>
-
-</div>
 </nav>

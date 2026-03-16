@@ -1,0 +1,116 @@
+.confirmation-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.confirmation-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirmation-header h1 {
+  color: #2ea6df;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.confirmation-header p {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+.confirmation-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.booking-summary {
+  margin-bottom: 20px;
+}
+
+.summary-section h3 {
+  color: #2ea6df;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.summary-item .label {
+  font-weight: 600;
+}
+
+.total-section {
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 25px;
+  border-left: 4px solid #2ea6df;
+}
+
+.total-section h3 {
+  color: #2ea6df;
+  margin-top: 0 !important;
+  border-bottom: none !important;
+}
+
+.total-item {
+  border-bottom: none;
+  padding: 10px 0;
+}
+
+.total-amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2ea6df;
+}
+
+.confirmation-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.download-btn,
+.back-btn {
+  background: #2ea6df;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.back-btn {
+  background: #6c757d;
+}
+
+.download-btn:hover {
+  background: #1e8bc3;
+}
+
+.back-btn:hover {
+  background: #5a6268;
+}
+
+@media (max-width: 768px) {
+  .confirmation-container {
+    padding: 10px;
+  }
+
+  .confirmation-card {
+    padding: 20px;
+  }
+}
