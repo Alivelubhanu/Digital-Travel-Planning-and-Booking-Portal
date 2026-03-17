@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 interface User {
   fullName: string;
   email: string;
+  phoneNumber?: string;
+  travelType?: string;
+  budget?: number;
   password: string;
 }
 
@@ -37,7 +40,16 @@ export class AuthService {
     }
   }
 
-  register(fullName: string, email: string, password: string, confirmPassword: string): { success: boolean; message: string } {
+  register(params: {
+    fullName: string;
+    email: string;
+    phoneNumber?: string;
+    travelType?: string;
+    budget?: number;
+    password: string;
+    confirmPassword: string;
+  }): { success: boolean; message: string } {
+    const { fullName, email, phoneNumber, travelType, budget, password, confirmPassword } = params;
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -60,7 +72,7 @@ export class AuthService {
     }
 
     // Register user
-    const newUser: User = { fullName, email, password };
+    const newUser: User = { fullName, email, phoneNumber, travelType, budget, password };
     this.users.push(newUser);
     localStorage.setItem('users', JSON.stringify(this.users));
 

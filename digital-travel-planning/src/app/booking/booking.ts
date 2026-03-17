@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookingService } from '../booking.service';
-import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DESTINATIONS, type Destination, type Hotel, type StateInfo } from '../../assets/data/destinations-data';
+import { AuthService } from '../auth.service';
+import { BookingService } from '../booking.service';
 import { TripSelectionService, type TripSelection } from '../trip-selection.service';
 
 interface BookingData {
@@ -47,28 +47,38 @@ export class Booking implements OnInit {
     travelMode: '',
     travelDate: '',
     checkoutDate: '',
-    totalPrice: 0
-    
+    totalPrice: 0,
   };
 
   destinations: string[] = DESTINATIONS.map(d => d.name);
 
-  // Destination pricing (per person per day in ₹)
-  destinationPricing: { [key: string]: number } = {
-    'Paris': 4000,
-    'Maldives': 4500,
-    'India': 2500,
-    'Dubai': 3500,
-    'Bali': 3000,
+  destinationPricing: Record<string, number> = {
+    Paris: 4000,
+    Maldives: 4500,
+    India: 2500,
+    Dubai: 3500,
+    Bali: 3000,
     'New York': 4000,
-    'Rome': 3500,
-    'Switzerland': 4500
+    Rome: 3500,
+    Switzerland: 4500,
   };
 
-  // Travel mode pricing (per day in ₹)
-  travelModePricing: { [key: string]: number } = {
-    'Car': 2000,
-    'Auto': 1000
+  travelModePricing: Record<string, number> = {
+    Flight: 9000,
+    Train: 1500,
+    Bus: 800,
+    Metro: 600,
+    Taxi: 2500,
+    Car: 2000,
+    Bike: 500,
+    Auto: 1000,
+  };
+
+  // Food pricing (per person per day in ₹)
+  foodPreferencePricing: Record<string, number> = {
+    Vegetarian: 350,
+    'Non-Vegetarian': 550,
+    Vegan: 450,
   };
 
   minDate: string = '';
@@ -81,7 +91,7 @@ export class Booking implements OnInit {
     private router: Router,
     @Inject(BookingService) private bookingService: BookingService,
     private auth: AuthService,
-    private tripSelection: TripSelectionService
+    private tripSelection: TripSelectionService,
   ) {}
 
   ngOnInit() {
@@ -131,11 +141,7 @@ export class Booking implements OnInit {
     this.availableStates = dest?.states ?? [];
 
     const selectedState = this.availableStates.find(s => s.name === this.bookingData.stateName);
-    if (selectedState) {
-      this.availableHotels = selectedState.hotels;
-    } else {
-      this.availableHotels = [];
-    }
+    this.availableHotels = selectedState ? selectedState.hotels : [];
   }
 
   private getSelectedDestination(): Destination | undefined {
@@ -169,23 +175,25 @@ export class Booking implements OnInit {
   calculateTotalPrice() {
     let total = 0;
 
-    // Base destination price (per person per day)
     if (this.bookingData.destination && this.bookingData.members && this.bookingData.days) {
       const destinationRate = this.destinationPricing[this.bookingData.destination] || 0;
       total += destinationRate * this.bookingData.members * this.bookingData.days;
     }
 
-    // Room supplement (₹1000 per room per night)
+    // Food cost (per person per day)
+    if (this.bookingData.foodPreference && this.bookingData.members && this.bookingData.days) {
+      const foodRate = this.foodPreferencePricing[this.bookingData.foodPreference] || 0;
+      total += foodRate * this.bookingData.members * this.bookingData.days;
+    }
+
     if (this.bookingData.rooms && this.bookingData.nights) {
       total += 1000 * this.bookingData.rooms * this.bookingData.nights;
     }
 
-    // Bed supplement (₹500 per bed per night)
     if (this.bookingData.beds && this.bookingData.nights) {
       total += 500 * this.bookingData.beds * this.bookingData.nights;
     }
 
-    // Travel mode cost (per day)
     if (this.bookingData.travelMode && this.bookingData.days) {
       const travelRate = this.travelModePricing[this.bookingData.travelMode] || 0;
       total += travelRate * this.bookingData.days;

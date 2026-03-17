@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { DESTINATIONS } from '../../assets/data/destinations-data';
 import { Router, RouterLink } from '@angular/router';
+import { DESTINATIONS } from '../../assets/data/destinations-data';
 import { AuthService } from '../auth.service';
 import { TripSelectionService } from '../trip-selection.service';
 

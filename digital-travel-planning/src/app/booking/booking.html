@@ -106,7 +106,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="foodPreference">Food Preference *</label>
-          <select id="foodPreference" name="foodPreference" [(ngModel)]="bookingData.foodPreference" required #foodPreference="ngModel">
+          <select id="foodPreference" name="foodPreference" [(ngModel)]="bookingData.foodPreference" required #foodPreference="ngModel" (change)="calculateTotalPrice()">
             <option value="">Select food preference</option>
             <option value="Vegetarian">Vegetarian</option>
             <option value="Non-Vegetarian">Non-Vegetarian</option>
@@ -136,7 +136,13 @@
           <label for="travelMode">Travel Mode *</label>
           <select id="travelMode" name="travelMode" [(ngModel)]="bookingData.travelMode" required #travelMode="ngModel" (change)="calculateTotalPrice()">
             <option value="">Select travel mode</option>
+            <option value="Flight">Flight</option>
+            <option value="Train">Train</option>
+            <option value="Bus">Bus</option>
+            <option value="Metro">Metro</option>
+            <option value="Taxi">Taxi</option>
             <option value="Car">Car</option>
+            <option value="Bike">Bike</option>
             <option value="Auto">Auto</option>
           </select>
           <div class="error" *ngIf="travelMode.invalid && travelMode.touched">Travel mode is required</div>

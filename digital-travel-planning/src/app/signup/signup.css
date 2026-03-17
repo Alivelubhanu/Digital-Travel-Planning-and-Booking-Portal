@@ -2,8 +2,9 @@
   display:flex;
   justify-content:center;
   align-items:center;
-  height:80vh;
+  min-height: calc(100vh - 70px);
   background:#f5f7fa;
+  padding: 30px 16px;
 }
 
 .signup-card{
@@ -29,12 +30,43 @@
   margin-bottom:20px;
 }
 
-.signup-card input{
+.field-row{
+  display:grid;
+  grid-template-columns: 140px 1fr;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.field-row label{
+  font-weight: 700;
+  color: #111827;
+  font-size: 14px;
+}
+
+.signup-card input,
+.signup-card select{
   width:100%;
   padding:12px;
-  margin-bottom:15px;
   border:1px solid #e5e7eb;
   border-radius:8px;
+  background:white;
+}
+
+.terms-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content:flex-start;
+  margin: 6px 0 14px;
+  font-weight: 500;
+}
+
+.terms-row input[type="checkbox"]{
+  width: 18px;
+  height: 18px;
+  margin: 0;
 }
 
 .signup-btn{
@@ -72,4 +104,16 @@
 
 .signin-text{
   margin-top:15px;
+}
+
+@media (max-width: 520px){
+  .field-row{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .signup-card{
+    width: 100%;
+    max-width: 420px;
+  }
 }

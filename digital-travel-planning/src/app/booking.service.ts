@@ -4,6 +4,8 @@ interface BookingData {
   username: string;
   email: string;
   destination: string;
+  stateName?: string;
+  hotelName?: string;
   members: number;
   days: number;
   nights: number;
@@ -12,6 +14,8 @@ interface BookingData {
   rooms: number;
   travelMode: string;
   travelDate: string;
+  checkoutDate?: string;
+  totalPrice?: number;
 
 }
 

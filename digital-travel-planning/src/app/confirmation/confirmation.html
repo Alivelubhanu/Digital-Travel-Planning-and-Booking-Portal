@@ -22,6 +22,14 @@
           <span class="label">Destination:</span>
           <span class="value">{{ bookingData.destination }}</span>
         </div>
+        <div class="summary-item" *ngIf="bookingData.stateName">
+          <span class="label">State / City:</span>
+          <span class="value">{{ bookingData.stateName }}</span>
+        </div>
+        <div class="summary-item" *ngIf="bookingData.hotelName">
+          <span class="label">Hotel:</span>
+          <span class="value">{{ bookingData.hotelName }}</span>
+        </div>
       </div>
 
       <div class="summary-section">
@@ -57,6 +65,10 @@
         <div class="summary-item">
           <span class="label">Travel Date:</span>
           <span class="value">{{ formatDate(bookingData.travelDate) }}</span>
+        </div>
+        <div class="summary-item" *ngIf="bookingData.checkoutDate">
+          <span class="label">Checkout Date:</span>
+          <span class="value">{{ formatDate(bookingData.checkoutDate) }}</span>
         </div>
       </div>
 

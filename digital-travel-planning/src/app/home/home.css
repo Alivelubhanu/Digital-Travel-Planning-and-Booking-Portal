@@ -208,40 +208,56 @@
   padding: 12px;
 }
 
-.book-tour {
-  padding: 70px 40px;
-  background-image: linear-gradient(
-      rgba(11, 44, 77, 0.85),
-      rgba(11, 44, 77, 0.85)
-    ),
-    url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  color: white;
+.home-cta {
+  padding: 50px 20px;
+  background: #ffffff;
 }
 
-.booking-form {
-  margin-top: 30px;
+.home-cta-inner {
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
-.booking-form input {
-  padding: 12px;
-  width: 200px;
-  border-radius: 5px;
-  border: none;
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  min-width: 210px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.booking-form button {
-  padding: 12px 25px;
-  background-color: #3ccfcf;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0,0,0,0.12);
+}
+
+.cta-btn-primary {
+  background: #2ea6df;
+  color: white;
+}
+
+.cta-btn-primary:hover {
+  background: #1d8cc2;
+}
+
+.cta-btn-secondary {
+  background: #19b394;
+  color: white;
+}
+
+.cta-btn-secondary:hover {
+  background: #12967c;
 }
 
 .footer {

@@ -5,41 +5,95 @@
     <p>Sign up to start booking your adventures</p>
 
     <form (ngSubmit)="onSignup()" #signupForm="ngForm">
-      <label>Full Name</label>
-      <input 
-        name="fullName" 
-        [(ngModel)]="fullName" 
-        required 
-        placeholder="John Doe" 
-      />
+      <div class="field-row">
+        <label for="fullName">Full Name</label>
+        <input
+          id="fullName"
+          name="fullName"
+          [(ngModel)]="fullName"
+          required
+          placeholder="John Doe"
+        />
+      </div>
 
-      <label>Email</label>
-      <input 
-        name="email" 
-        [(ngModel)]="email" 
-        required 
-        type="email"
-        placeholder="you@example.com" 
-      />
+      <div class="field-row">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          type="email"
+          placeholder="you@example.com"
+        />
+      </div>
 
-      <label>Password</label>
-      <input 
-        type="password" 
-        name="password" 
-        [(ngModel)]="password" 
-        required 
-        minlength="6" 
-        placeholder="Minimum 6 characters" 
-      />
+      <div class="field-row">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          id="phoneNumber"
+          name="phoneNumber"
+          [(ngModel)]="phoneNumber"
+          required
+          inputmode="tel"
+          placeholder="e.g. +91 98765 43210"
+        />
+      </div>
 
-      <label>Confirm Password</label>
-      <input 
-        type="password" 
-        name="confirmPassword" 
-        [(ngModel)]="confirmPassword" 
-        required 
-        placeholder="Confirm Password" 
-      />
+      <div class="field-row">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          minlength="6"
+          placeholder="Minimum 6 characters"
+        />
+      </div>
+
+      <div class="field-row">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          required
+          placeholder="Confirm Password"
+        />
+      </div>
+
+      <div class="field-row">
+        <label for="travelType">Travel Type</label>
+        <select id="travelType" name="travelType" [(ngModel)]="travelType" required>
+          <option value="" disabled>Select a travel type</option>
+          <option value="City">City</option>
+          <option value="Beach">Beach</option>
+          <option value="Nature">Nature</option>
+          <option value="Culture">Culture</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Cruise">Cruise</option>
+        </select>
+      </div>
+
+      <div class="field-row">
+        <label for="budget">Budget (Optional)</label>
+        <input
+          id="budget"
+          type="number"
+          name="budget"
+          [(ngModel)]="budget"
+          min="0"
+          placeholder="e.g. 50000"
+        />
+      </div>
+
+      <label class="terms-row">
+        <input type="checkbox" name="agreeToTerms" [(ngModel)]="agreeToTerms" />
+        <span>I agree to Terms &amp; Conditions</span>
+      </label>
 
       <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
