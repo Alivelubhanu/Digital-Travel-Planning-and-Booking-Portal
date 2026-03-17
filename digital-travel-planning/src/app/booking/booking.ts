@@ -1,15 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingService } from '../booking.service';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DESTINATIONS } from '../../assets/data/destinations-data';
+import { DESTINATIONS, type Destination, type Hotel, type StateInfo } from '../../assets/data/destinations-data';
+import { TripSelectionService, type TripSelection } from '../trip-selection.service';
 
 interface BookingData {
   username: string;
   email: string;
   destination: string;
+  stateName?: string;
+  hotelName?: string;
   members: number;
   days: number;
   nights: number;
@@ -18,6 +21,7 @@ interface BookingData {
   rooms: number;
   travelMode: string;
   travelDate: string;
+  checkoutDate?: string;
   totalPrice?: number;
 }
 
@@ -32,6 +36,8 @@ export class Booking implements OnInit {
     username: '',
     email: '',
     destination: '',
+    stateName: '',
+    hotelName: '',
     members: 1,
     days: 1,
     nights: 0,
@@ -40,7 +46,9 @@ export class Booking implements OnInit {
     rooms: 1,
     travelMode: '',
     travelDate: '',
+    checkoutDate: '',
     totalPrice: 0
+    
   };
 
   destinations: string[] = DESTINATIONS.map(d => d.name);
@@ -64,11 +72,16 @@ export class Booking implements OnInit {
   };
 
   minDate: string = '';
+  selectedFromDetails: TripSelection | null = null;
+  availableStates: StateInfo[] = [];
+  availableHotels: Hotel[] = [];
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     @Inject(BookingService) private bookingService: BookingService,
-    private auth: AuthService
+    private auth: AuthService,
+    private tripSelection: TripSelectionService
   ) {}
 
   ngOnInit() {
@@ -80,6 +93,54 @@ export class Booking implements OnInit {
       this.bookingData.username = user.fullName || '';
       this.bookingData.email = user.email || '';
     }
+
+    const shouldPrefill = this.route.snapshot.queryParamMap.get('prefill') === '1';
+    if (shouldPrefill) {
+      this.selectedFromDetails = this.tripSelection.getSelection();
+      if (this.selectedFromDetails?.destinationName) {
+        this.bookingData.destination = this.selectedFromDetails.destinationName;
+        this.bookingData.stateName = this.selectedFromDetails.stateName || '';
+        this.bookingData.hotelName = this.selectedFromDetails.hotel?.name || '';
+      }
+    } else {
+      this.tripSelection.clearSelection();
+      this.selectedFromDetails = null;
+      this.bookingData.destination = '';
+      this.bookingData.stateName = '';
+      this.bookingData.hotelName = '';
+    }
+
+    this.refreshStateAndHotelOptions();
+    this.calculateTotalPrice();
+  }
+
+  onDestinationChange() {
+    this.bookingData.stateName = '';
+    this.bookingData.hotelName = '';
+    this.refreshStateAndHotelOptions();
+    this.calculateTotalPrice();
+  }
+
+  onStateChange() {
+    this.bookingData.hotelName = '';
+    this.refreshStateAndHotelOptions();
+  }
+
+  private refreshStateAndHotelOptions() {
+    const dest = this.getSelectedDestination();
+    this.availableStates = dest?.states ?? [];
+
+    const selectedState = this.availableStates.find(s => s.name === this.bookingData.stateName);
+    if (selectedState) {
+      this.availableHotels = selectedState.hotels;
+    } else {
+      this.availableHotels = [];
+    }
+  }
+
+  private getSelectedDestination(): Destination | undefined {
+    if (!this.bookingData.destination) return undefined;
+    return DESTINATIONS.find(d => d.name === this.bookingData.destination);
   }
 
   calculateNights() {
@@ -88,7 +149,21 @@ export class Booking implements OnInit {
     } else {
       this.bookingData.nights = 0;
     }
+    this.updateCheckoutDate();
     this.calculateTotalPrice();
+  }
+
+  updateCheckoutDate() {
+    this.bookingData.checkoutDate = this.computeCheckoutDate(this.bookingData.travelDate, this.bookingData.days);
+  }
+
+  private computeCheckoutDate(checkinIso: string, days: number): string {
+    if (!checkinIso) return '';
+    const d = new Date(checkinIso);
+    if (Number.isNaN(d.getTime())) return '';
+    const n = Number.isFinite(days) ? Math.max(1, days) : 1;
+    d.setDate(d.getDate() + n);
+    return d.toISOString().split('T')[0];
   }
 
   calculateTotalPrice() {
@@ -124,6 +199,7 @@ export class Booking implements OnInit {
       return;
     }
 
+    this.updateCheckoutDate();
     this.calculateTotalPrice();
     this.bookingService.setBooking(this.bookingData);
     this.router.navigate(['/confirmation']);

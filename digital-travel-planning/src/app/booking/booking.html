@@ -4,6 +4,29 @@
     <p>Fill in the details below to plan your perfect journey</p>
   </div>
 
+  <div class="selection-summary">
+    <div class="summary-title">Selected Trip</div>
+
+    <div class="summary-empty" *ngIf="!bookingData.destination">
+      Select a destination to see your chosen state and hotel here.
+    </div>
+
+    <div class="summary-grid" *ngIf="bookingData.destination">
+      <div class="summary-item">
+        <span class="k">Destination</span>
+        <span class="v">{{ bookingData.destination }}</span>
+      </div>
+      <div class="summary-item" *ngIf="bookingData.stateName">
+        <span class="k">State / City</span>
+        <span class="v">{{ bookingData.stateName }}</span>
+      </div>
+      <div class="summary-item" *ngIf="bookingData.hotelName">
+        <span class="k">Hotel</span>
+        <span class="v">{{ bookingData.hotelName }}</span>
+      </div>
+    </div>
+  </div>
+
   <form class="booking-form" #bookingForm="ngForm" (ngSubmit)="onSubmit()">
     <!-- User Information -->
     <div class="form-section">
@@ -25,11 +48,31 @@
       </div>
       <div class="form-group">
         <label for="destination">Destination *</label>
-        <select id="destination" name="destination" [(ngModel)]="bookingData.destination" required #destination="ngModel" (change)="calculateTotalPrice()">
+        <select id="destination" name="destination" [(ngModel)]="bookingData.destination" required #destination="ngModel" (change)="onDestinationChange()">
           <option value="">Select a destination</option>
           <option *ngFor="let dest of destinations" [value]="dest">{{ dest }}</option>
         </select>
         <div class="error" *ngIf="destination.invalid && destination.touched">Destination is required</div>
+      </div>
+
+      <div class="form-row" *ngIf="availableStates.length > 0">
+        <div class="form-group">
+          <label for="stateName">State / City</label>
+          <select id="stateName" name="stateName" [(ngModel)]="bookingData.stateName" (change)="onStateChange()">
+            <option value="">Select a state/city</option>
+            <option *ngFor="let s of availableStates" [value]="s.name">{{ s.name }}</option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="availableHotels.length > 0">
+          <label for="hotelName">Hotel</label>
+          <select id="hotelName" name="hotelName" [(ngModel)]="bookingData.hotelName">
+            <option value="">Select a hotel</option>
+            <option *ngFor="let h of availableHotels" [value]="h.name">
+              {{ h.name }} (₹{{ h.price }} • ★{{ h.rating.toFixed(1) }})
+            </option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -100,8 +143,12 @@
         </div>
         <div class="form-group">
           <label for="travelDate">Travel Date *</label>
-          <input type="date" id="travelDate" name="travelDate" [(ngModel)]="bookingData.travelDate" required [min]="minDate" #travelDate="ngModel">
+          <input type="date" id="travelDate" name="travelDate" [(ngModel)]="bookingData.travelDate" required [min]="minDate" #travelDate="ngModel" (change)="updateCheckoutDate()">
           <div class="error" *ngIf="travelDate.invalid && travelDate.touched">Travel date is required and must be today or later</div>
+        </div>
+        <div class="form-group">
+          <label for="checkoutDate">Checkout Date</label>
+          <input type="date" id="checkoutDate" name="checkoutDate" [value]="bookingData.checkoutDate" readonly>
         </div>
       </div>
     </div>

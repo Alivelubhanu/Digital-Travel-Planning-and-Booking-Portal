@@ -12,7 +12,9 @@ interface BookingData {
   rooms: number;
   travelMode: string;
   travelDate: string;
+
 }
+
 
 @Injectable({
   providedIn: 'root'

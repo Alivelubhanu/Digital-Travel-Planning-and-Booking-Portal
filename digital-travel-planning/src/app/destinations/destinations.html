@@ -1,13 +1,6 @@
-<section class="dest-hero">
-  <div class="hero-overlay">
-    <p class="hero-tag">EXPLORE THE WORLD</p>
-    <h1>Discover Your Next Adventure</h1>
-    <p class="hero-sub">
-      From bustling cities to serene beaches and majestic mountains —
-      find the perfect destination for your journey.
-    </p>
-  </div>
-</section>
+
+
+
 
 <div class="destinations-page">
   <h1>Popular Destinations</h1>
@@ -60,20 +53,40 @@
 
   <div class="destinations-grid">
     <div
-      class="destination-card"
-      *ngFor="let place of filteredDestinations"
-    >
-      <img [src]="place.image" loading="lazy" />
-      <h3>{{ place.name }}</h3>
-      <p>{{ place.description }}</p>
+  class="destination-card"
+  *ngFor="let place of filteredDestinations"
+  [routerLink]="['/details', place.name]"
+  role="link"
+  tabindex="0"
+>
+  <img [src]="place.image" loading="lazy" />
 
-      <!-- ⭐⭐⭐ ADD STARS HERE ⭐⭐⭐ -->
-      <div class="rating">
-        <span *ngFor="let star of [1,2,3,4,5]">
-          <i class="star" [class.filled]="star <= place.rating">★</i>
-        </span>
-      </div>
+  <h3>{{ place.name }}</h3>
+  <p>{{ place.description }}</p>
 
-    </div>
+  <!-- ⭐⭐⭐ STARS ⭐⭐⭐ -->
+  <div class="rating">
+    <span *ngFor="let star of [1,2,3,4,5]">
+      <i class="star" [class.filled]="star <= place.rating">★</i>
+    </span>
+  </div>
+
+  <!-- ⭐⭐⭐ BUTTONS ADDED HERE ⭐⭐⭐ -->
+  <div class="card-buttons">
+  <button class="book-btn" type="button" (click)="onBook(place.name, $event)">
+    Book Now
+  </button>
+
+  <button
+    class="details-btn"
+    [routerLink]="['/details', place.name]"
+    type="button"
+  >
+    View Details
+  </button>
+
+  </div>
+
+</div>
   </div>
 </div>
