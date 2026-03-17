@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { ToastService } from '../toast/toast.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -21,6 +22,7 @@ export class Login {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private toast: ToastService,
   ) {
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
   }
@@ -35,6 +37,12 @@ export class Login {
 
     // Attempt login
     if (this.authService.login(this.email, this.password)) {
+      this.toast.show({
+        title: 'Signed in successfully',
+        message: `Welcome back!`,
+        type: 'success',
+        durationMs: 1500,
+      });
       // If user was redirected here by a guard, go back there; otherwise go Home.
       this.router.navigateByUrl(this.returnUrl || '/');
     } else {

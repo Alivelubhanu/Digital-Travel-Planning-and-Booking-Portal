@@ -1,30 +1,33 @@
-<div class="details-page">
-  <ng-container *ngIf="place; else notFound">
+<div
+  class="details-page"
+  [ngStyle]="place?.image ? { '--details-bg': 'url(' + place?.image + ')' } : null"
+>
+  <ng-container *ngIf="place as p; else notFound">
     <div class="details-card">
       <div class="details-media">
-        <img [src]="place.image" [alt]="place.name" class="details-image" />
+        <img [src]="p.image" [alt]="p.name" class="details-image" />
       </div>
 
       <div class="details-content">
         <div class="details-top">
           <a class="back-link" routerLink="/destinations">← Back to destinations</a>
 
-          <h1 class="details-title">{{ place.name }}</h1>
+          <h1 class="details-title">{{ p.name }}</h1>
 
           <div class="details-meta">
-            <span class="chip">{{ place.category }}</span>
-            <span class="chip chip-muted">Rating: {{ place.rating.toFixed(1) }}/5</span>
+            <span class="chip">{{ p.category }}</span>
+            <span class="chip chip-muted">Rating: {{ p.rating.toFixed(1) }}/5</span>
           </div>
 
           <div class="rating" aria-label="Rating stars">
-            <span *ngFor="let star of [1,2,3,4,5]" class="star" [class.filled]="star <= place.rating">
+            <span *ngFor="let star of [1,2,3,4,5]" class="star" [class.filled]="star <= p.rating">
               ★
             </span>
           </div>
         </div>
 
         <p class="details-description">
-          {{ place.description }}
+          {{ p.description }}
         </p>
 
         <div class="states">
@@ -42,7 +45,7 @@
             <button
               type="button"
               class="state-chip"
-              *ngFor="let s of place.states"
+              *ngFor="let s of p.states"
               (click)="selectState(s)"
               [ngClass]="{ active: selectedState?.name === s.name }"
             >

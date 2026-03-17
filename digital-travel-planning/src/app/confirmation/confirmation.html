@@ -10,6 +10,10 @@
 
       <div class="summary-section">
         <h3>User Information</h3>
+        <div class="summary-item" *ngIf="bookingData.bookingId">
+          <span class="label">Booking ID:</span>
+          <span class="value">{{ bookingData.bookingId }}</span>
+        </div>
         <div class="summary-item">
           <span class="label">Full Name:</span>
           <span class="value">{{ bookingData.username }}</span>

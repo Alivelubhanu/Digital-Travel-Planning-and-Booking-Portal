@@ -1,0 +1,15 @@
+<div class="toast-wrap" *ngIf="toast() as t" aria-live="polite">
+  <div class="toast-card" [ngClass]="t.type" role="status">
+    <div class="toast-icon">
+      <span *ngIf="t.type === 'success'">✓</span>
+      <span *ngIf="t.type === 'info'">i</span>
+      <span *ngIf="t.type === 'error'">!</span>
+    </div>
+    <div class="toast-body">
+      <div class="toast-title">{{ t.title }}</div>
+      <div class="toast-sub" *ngIf="t.message">{{ t.message }}</div>
+    </div>
+    <button type="button" class="toast-close" (click)="toastService.clear()" aria-label="Close notification">×</button>
+  </div>
+</div>
+

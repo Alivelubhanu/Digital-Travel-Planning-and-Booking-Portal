@@ -10,6 +10,7 @@ import { TripSelectionService, type TripSelection } from '../trip-selection.serv
 interface BookingData {
   username: string;
   email: string;
+  bookingId?: string;
   destination: string;
   stateName?: string;
   hotelName?: string;
@@ -35,6 +36,7 @@ export class Booking implements OnInit {
   bookingData: BookingData = {
     username: '',
     email: '',
+    bookingId: '',
     destination: '',
     stateName: '',
     hotelName: '',
@@ -85,6 +87,25 @@ export class Booking implements OnInit {
   selectedFromDetails: TripSelection | null = null;
   availableStates: StateInfo[] = [];
   availableHotels: Hotel[] = [];
+
+  get selectedBookingBackgroundImage(): string | null {
+    const dest = this.getSelectedDestination();
+    if (!dest) return null;
+
+    const stateName = (this.bookingData.stateName || '').trim();
+    if (stateName) {
+      const state = dest.states.find(s => s.name === stateName);
+      if (state?.image) return state.image;
+    }
+
+    const hotelName = (this.bookingData.hotelName || '').trim();
+    if (hotelName) {
+      const hotel = dest.states.flatMap(s => s.hotels).find(h => h.name === hotelName);
+      if (hotel?.image) return hotel.image;
+    }
+
+    return dest.image ?? null;
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -209,7 +230,23 @@ export class Booking implements OnInit {
 
     this.updateCheckoutDate();
     this.calculateTotalPrice();
+    this.bookingData.bookingId = this.generateBookingId();
     this.bookingService.setBooking(this.bookingData);
-    this.router.navigate(['/confirmation']);
+    this.showBookingPopup = true;
+    setTimeout(() => {
+      this.showBookingPopup = false;
+      this.router.navigate(['/confirmation']);
+    }, 1400);
+  }
+
+  showBookingPopup = false;
+
+  private generateBookingId(): string {
+    const d = new Date();
+    const y = d.getFullYear().toString().slice(-2);
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const rand = Math.random().toString(36).slice(2, 7).toUpperCase();
+    return `TV-${y}${m}${day}-${rand}`;
   }
 }

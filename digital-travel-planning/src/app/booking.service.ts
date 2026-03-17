@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 interface BookingData {
   username: string;
   email: string;
+  bookingId?: string;
   destination: string;
   stateName?: string;
   hotelName?: string;
