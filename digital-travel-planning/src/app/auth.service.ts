@@ -83,7 +83,14 @@ export class AuthService {
     const user = this.users.find(u => u.email === email && u.password === password);
     if (user) {
       this.isAuthenticated = true;
-      this.currentUser = { fullName: user.fullName, email: user.email, password: '' }; // Don't store password in currentUser
+      this.currentUser = {
+        fullName: user.fullName,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        travelType: user.travelType,
+        budget: user.budget,
+        password: '' // Don't store password in currentUser
+      };
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       return true;

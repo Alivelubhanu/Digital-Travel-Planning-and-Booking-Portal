@@ -89,7 +89,7 @@ export const DESTINATIONS: Destination[] = [
   },
   {
     name: 'India',
-    image: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1',
+    image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2000&q=60',
     description: 'Culture and heritage',
     category: 'Culture',
     rating: 4.7,
@@ -281,6 +281,213 @@ export const DESTINATIONS: Destination[] = [
         hotels: [
           { name: 'Victoria-Jungfrau Grand Hotel', price: 45000, rating: 4.8 },
           { name: 'Hotel Interlaken', price: 21000, rating: 4.4 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Iceland',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=60',
+    description: 'Volcanic landscapes, waterfalls, and glaciers',
+    category: 'Nature',
+    rating: 4.8,
+    states: [
+      {
+        name: 'Reykjavik',
+        hotels: [
+          { name: 'Nordic Harbor Hotel', price: 22000, rating: 4.7 },
+          { name: 'Aurora Suites', price: 26000, rating: 4.8 },
+        ],
+      },
+      {
+        name: 'South Coast',
+        hotels: [
+          { name: 'Glacier View Lodge', price: 24000, rating: 4.6 },
+          { name: 'Waterfall Retreat', price: 27000, rating: 4.7 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Norway',
+    image: 'https://images.unsplash.com/photo-1500048993959-d8643b26b71e?auto=format&fit=crop&w=2000&q=60',
+    description: 'Fjords, northern lights, and scenic train routes',
+    category: 'Nature',
+    rating: 4.7,
+    states: [
+      {
+        name: 'Bergen',
+        hotels: [
+          { name: 'Fjordside Boutique', price: 26000, rating: 4.6 },
+          { name: 'Bryggen Harbor Inn', price: 24000, rating: 4.5 },
+        ],
+      },
+      {
+        name: 'Oslo & Fjords',
+        hotels: [
+          { name: 'Capital Skyline Hotel', price: 28000, rating: 4.7 },
+          { name: 'Fjord Horizon Resort', price: 32000, rating: 4.8 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Canada',
+    image: 'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?auto=format&fit=crop&w=2000&q=60',
+    description: 'Lakes, national parks, and iconic wilderness views',
+    category: 'Nature',
+    rating: 4.8,
+    states: [
+      {
+        name: 'Banff',
+        hotels: [
+          { name: 'Rocky Mountain Lodge', price: 30000, rating: 4.8 },
+          { name: 'Alpine Vista Suites', price: 27000, rating: 4.7 },
+        ],
+      },
+      {
+        name: 'Vancouver',
+        hotels: [
+          { name: 'Pacific Shore Hotel', price: 26000, rating: 4.6 },
+          { name: 'Cedar Grove Retreat', price: 25000, rating: 4.5 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Kenya',
+    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=2000&q=60',
+    description: 'Safari adventures and breathtaking wildlife reserves',
+    category: 'Nature',
+    rating: 4.7,
+    states: [
+      {
+        name: 'Nairobi',
+        hotels: [
+          { name: 'Savanna City Hotel', price: 19000, rating: 4.6 },
+          { name: 'Skyline Safari Suites', price: 21000, rating: 4.7 },
+        ],
+      },
+      {
+        name: 'Maasai Mara',
+        hotels: [
+          { name: 'Mara Sunset Camp', price: 26000, rating: 4.8 },
+          { name: 'Wildlife Horizon Lodge', price: 24000, rating: 4.6 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Nepal',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=60',
+    description: 'Himalayan views, trekking trails, and mountain air',
+    category: 'Nature',
+    rating: 4.8,
+    states: [
+      {
+        name: 'Kathmandu Valley',
+        hotels: [
+          { name: 'Heritage Hills Inn', price: 15000, rating: 4.5 },
+          { name: 'Temples & Trails Hotel', price: 17000, rating: 4.6 },
+        ],
+      },
+      {
+        name: 'Pokhara',
+        hotels: [
+          { name: 'Lakefront Mountain Suites', price: 18000, rating: 4.7 },
+          { name: 'Annapurna Base Resort', price: 22000, rating: 4.8 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Costa Rica',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=60',
+    description: 'Rainforests, beaches, and eco-adventure experiences',
+    category: 'Nature',
+    rating: 4.7,
+    states: [
+      {
+        name: 'Arenal',
+        hotels: [
+          { name: 'Volcano Springs Hotel', price: 19000, rating: 4.6 },
+          { name: 'Jungle Edge Lodge', price: 21000, rating: 4.7 },
+        ],
+      },
+      {
+        name: 'Manuel Antonio',
+        hotels: [
+          { name: 'Coastline Canopy Inn', price: 22000, rating: 4.8 },
+          { name: 'Tropical Breeze Suites', price: 20000, rating: 4.6 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'New Zealand',
+    image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=2000&q=60',
+    description: 'Alpine adventures and dramatic coastlines',
+    category: 'Nature',
+    rating: 4.9,
+    states: [
+      {
+        name: 'Queenstown',
+        hotels: [
+          { name: 'Lake Wakatipu Retreat', price: 28000, rating: 4.8 },
+          { name: 'Shotover View Hotel', price: 30000, rating: 4.9 },
+        ],
+      },
+      {
+        name: 'Wellington',
+        hotels: [
+          { name: 'Harborwind Suites', price: 24000, rating: 4.7 },
+          { name: 'Windy Peak Lodge', price: 26000, rating: 4.6 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Tanzania',
+    image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=60',
+    description: 'Wildlife parks and awe-inspiring landscapes',
+    category: 'Nature',
+    rating: 4.7,
+    states: [
+      {
+        name: 'Arusha',
+        hotels: [
+          { name: 'Mt. Meru City Hotel', price: 20000, rating: 4.6 },
+          { name: 'Safari Sunrise Suites', price: 22000, rating: 4.7 },
+        ],
+      },
+      {
+        name: 'Serengeti',
+        hotels: [
+          { name: 'Serengeti Star Camp', price: 28000, rating: 4.8 },
+          { name: 'Plains of Light Lodge', price: 26000, rating: 4.6 },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Patagonia',
+    image: 'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=2000&q=60',
+    description: 'Glaciers, steppe winds, and unforgettable nature horizons',
+    category: 'Nature',
+    rating: 4.8,
+    states: [
+      {
+        name: 'El Calafate',
+        hotels: [
+          { name: 'Glacier Edge Hotel', price: 29000, rating: 4.7 },
+          { name: 'Patagonian Wind Suites', price: 32000, rating: 4.8 },
+        ],
+      },
+      {
+        name: 'Puerto Natales',
+        hotels: [
+          { name: 'Torres Terrace Lodge', price: 27000, rating: 4.6 },
+          { name: 'Southern Lights Resort', price: 30000, rating: 4.7 },
         ],
       },
     ],

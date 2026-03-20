@@ -78,3 +78,59 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+/* Light/Dark theme toggle (navbar + general background) */
+body.theme-dark {
+  background: #06070b;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.theme-dark .navbar {
+  background: rgba(6, 7, 11, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .nav-links a {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+body.theme-dark .nav-links a:hover {
+  color: #ffffff;
+}
+
+body.theme-dark .signin-btn,
+body.theme-dark .signup-btn,
+body.theme-dark .welcome-text,
+body.theme-dark .theme-toggle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.theme-dark .account-menu {
+  background: rgba(12, 15, 26, 0.98);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .menu-hello {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.theme-dark .detail-row .k {
+  color: rgba(226, 232, 240, 0.75);
+}
+
+body.theme-dark .detail-row .v {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.theme-dark .menu-avatar {
+  background: rgba(46, 166, 223, 0.14);
+}
+
+body.theme-dark .menu-item {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.theme-dark .menu-item:hover {
+  background: rgba(46, 166, 223, 0.18);
+  color: white;
+}

@@ -1,0 +1,55 @@
+<div class="my-bookings-page">
+  <div class="my-bookings-card">
+    <div class="header">
+      <h1>My Bookings</h1>
+      <p>Your latest booked trip details</p>
+    </div>
+
+    <div class="empty" *ngIf="!bookingData">
+      <p>No booking found yet. Book your trip and come back here.</p>
+      <a routerLink="/destinations" class="btn">Explore Destinations</a>
+    </div>
+
+    <div class="details" *ngIf="bookingData">
+      <div class="detail-grid">
+        <div class="detail-item">
+          <span class="k">Booking ID</span>
+          <span class="v">{{ bookingData.bookingId || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="k">Destination</span>
+          <span class="v">{{ bookingData.destination || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="k">State / City</span>
+          <span class="v">{{ bookingData.stateName || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="k">Hotel</span>
+          <span class="v">{{ bookingData.hotelName || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="k">Travel Date</span>
+          <span class="v">{{ bookingData.travelDate || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="k">Checkout Date</span>
+          <span class="v">{{ bookingData.checkoutDate || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="k">Total</span>
+          <span class="v" *ngIf="bookingData.totalPrice; else noTotal">
+            ₹{{ bookingData.totalPrice.toLocaleString('en-IN') }}
+          </span>
+          <ng-template #noTotal>₹ -</ng-template>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a routerLink="/confirmation" class="btn btn-primary">View Confirmation</a>
+        <a routerLink="/destinations" class="btn">Back to Destinations</a>
+      </div>
+    </div>
+  </div>
+</div>
+
