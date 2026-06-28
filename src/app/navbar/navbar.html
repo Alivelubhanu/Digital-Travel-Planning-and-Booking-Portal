@@ -1,0 +1,87 @@
+<nav class="navbar">
+
+  <!-- Logo -->
+  <div class="logo">
+    ✈️ <span class="brand-text">TravelVista</span>
+  </div>
+
+  <!-- Navigation -->
+  <ul class="nav-links">
+  <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+  <li><a routerLink="/destinations" routerLinkActive="active">Destinations</a></li>
+  <li><a routerLink="/booking" routerLinkActive="active">Book a Tour</a></li>
+  <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+</ul>
+
+  <!-- Right Section -->
+  <div class="auth-section">
+    <button
+      type="button"
+      class="theme-toggle"
+      (click)="toggleTheme()"
+      aria-label="Toggle theme"
+      title="Switch theme"
+    >
+      {{ theme === 'dark' ? '🌙' : '☀️' }}
+    </button>
+
+    <ng-container *ngIf="!auth.isLoggedIn(); else loggedIn">
+      <a routerLink="/login" class="signin-btn">Sign In</a>
+      <a routerLink="/signup" class="signup-btn">Sign Up</a>
+    </ng-container>
+    <ng-template #loggedIn>
+      <div class="user-menu" (click)="$event.stopPropagation()">
+        <button
+          type="button"
+          class="avatar-btn"
+          (click)="toggleAccountMenu()"
+          aria-haspopup="menu"
+          [attr.aria-expanded]="accountMenuOpen"
+          title="Account"
+        >
+          <span class="avatar-circle" aria-hidden="true">👤</span>
+        </button>
+
+        <div class="account-menu" *ngIf="accountMenuOpen" role="menu">
+          <div class="menu-profile-header" *ngIf="accountView === 'profile'">
+            <span class="menu-avatar" aria-hidden="true">👤</span>
+            <div class="menu-hello">
+              Hello, {{ auth.getCurrentUser()?.fullName || 'User' }}
+            </div>
+          </div>
+
+          <div class="menu-profile-details" *ngIf="accountView === 'profile'">
+            <div class="detail-row">
+              <span class="k">Name</span>
+              <span class="v">{{ auth.getCurrentUser()?.fullName || '-' }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="k">Email</span>
+              <span class="v">{{ auth.getCurrentUser()?.email || '-' }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="k">Phone Number</span>
+              <span class="v">{{ auth.getCurrentUser()?.phoneNumber || '-' }}</span>
+            </div>
+          </div>
+
+          <div class="menu-actions" *ngIf="accountView !== 'profile'">
+            <button type="button" class="menu-item" (click)="onMyProfile()">My Profile</button>
+            <button type="button" class="menu-item" (click)="onMyBookings()">My Bookings</button>
+            <button type="button" class="menu-item" (click)="onSettings()">Settings</button>
+            <div class="menu-divider"></div>
+            <button type="button" class="menu-item logout" (click)="logout()">Logout</button>
+          </div>
+
+          <div class="menu-actions menu-actions-profile" *ngIf="accountView === 'profile'">
+            <div class="menu-divider"></div>
+            <button type="button" class="menu-item" (click)="onMyBookings()">My Bookings</button>
+            <button type="button" class="menu-item" (click)="onSettings()">Settings</button>
+            <button type="button" class="menu-item logout" (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+</nav>

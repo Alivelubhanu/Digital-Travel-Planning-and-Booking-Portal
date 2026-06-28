@@ -1,0 +1,92 @@
+
+
+
+
+<div class="destinations-page">
+  <h1>Popular Destinations</h1>
+
+  <section class="filters-wrapper">
+    <!-- SEARCH -->
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        placeholder="Search by name or description..."
+        [(ngModel)]="searchText"
+        (input)="applyFilters()"
+      />
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters-right">
+      <div class="filter-group">
+        <label>TYPE</label>
+        <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+          <option value="All">All Types</option>
+          <option value="City">City</option>
+          <option value="Beach">Beach</option>
+          <option value="Culture">Culture</option>
+          <option value="Nature">Nature</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>POPULARITY</label>
+        <select>
+          <option>All Popularity</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>SORT BY</label>
+        <select>
+          <option>Recommended</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐⭐⭐ MOVE RESULTS COUNT HERE ⭐⭐⭐ -->
+  <p class="results-count">
+    {{ resultsCount }} destinations found
+  </p>
+
+  <div class="destinations-grid">
+    <div
+  class="destination-card"
+  *ngFor="let place of filteredDestinations"
+  [routerLink]="['/details', place.name]"
+  role="link"
+  tabindex="0"
+>
+  <img [src]="place.image" loading="lazy" />
+
+  <h3>{{ place.name }}</h3>
+  <p>{{ place.description }}</p>
+
+  <!-- ⭐⭐⭐ STARS ⭐⭐⭐ -->
+  <div class="rating">
+    <span *ngFor="let star of [1,2,3,4,5]">
+      <i class="star" [class.filled]="star <= place.rating">★</i>
+    </span>
+  </div>
+
+  <!-- ⭐⭐⭐ BUTTONS ADDED HERE ⭐⭐⭐ -->
+  <div class="card-buttons">
+  <button class="book-btn" type="button" (click)="onBook(place.name, $event)">
+    Book Now
+  </button>
+
+  <button
+    class="details-btn"
+    [routerLink]="['/details', place.name]"
+    type="button"
+  >
+    View Details
+  </button>
+
+  </div>
+
+</div>
+  </div>
+</div>

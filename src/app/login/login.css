@@ -1,0 +1,89 @@
+.login-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:80vh;
+  background:#f5f7fa;
+}
+
+.login-card{
+  width:400px;
+  background:white;
+  padding:40px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.login-icon{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.login-card h2{
+  margin-bottom:5px;
+}
+
+.login-card p{
+  color:#6b7280;
+  margin-bottom:20px;
+}
+
+.login-card input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+}
+
+.login-btn{
+  width:100%;
+  padding:12px;
+  background:#2a9fd6;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.login-btn:hover{
+  background:#1f8ac0;
+}
+
+.error-message {
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px solid #fecaca;
+}
+
+.demo{
+  margin-top:15px;
+  background:#f1f5f9;
+  padding:10px;
+  border-radius:8px;
+  font-size:14px;
+}
+.form-group{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+
+.form-group label{
+  font-weight:600;
+  margin-bottom:6px;
+  text-align:left;
+}
+
+.form-group input{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  font-size:15px;
+}

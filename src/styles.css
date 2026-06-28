@@ -1,0 +1,136 @@
+/* ⭐ social icons */
+.social-icons {
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+}
+
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.social-icons a:hover {
+  background: #2dd4bf;
+  transform: translateY(-3px);
+}
+/* ⭐ footer column vertical */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ⭐ social icons below text */
+.social-icons {
+  margin-top: 16px;
+  display: flex;
+  gap: 14px;
+  justify-content: flex-start;
+}
+
+/* ⭐ icon look */
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #00bcd4;
+  transform: translateY(-2px);
+}
+/* ===== Footer Links Fix ===== */
+
+.footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: #38bdf8;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col li {
+  margin-bottom: 8px;
+}
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Light/Dark theme toggle (navbar + general background) */
+body.theme-dark {
+  background: #06070b;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.theme-dark .navbar {
+  background: rgba(6, 7, 11, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .nav-links a {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+body.theme-dark .nav-links a:hover {
+  color: #ffffff;
+}
+
+body.theme-dark .signin-btn,
+body.theme-dark .signup-btn,
+body.theme-dark .welcome-text,
+body.theme-dark .theme-toggle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.theme-dark .account-menu {
+  background: rgba(12, 15, 26, 0.98);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .menu-hello {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.theme-dark .detail-row .k {
+  color: rgba(226, 232, 240, 0.75);
+}
+
+body.theme-dark .detail-row .v {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.theme-dark .menu-avatar {
+  background: rgba(46, 166, 223, 0.14);
+}
+
+body.theme-dark .menu-item {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.theme-dark .menu-item:hover {
+  background: rgba(46, 166, 223, 0.18);
+  color: white;
+}

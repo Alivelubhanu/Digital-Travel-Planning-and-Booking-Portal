@@ -1,0 +1,57 @@
+<div class="contact-wrapper">
+
+    <h1>Contact Us</h1>
+    <p class="subtitle">
+      Have questions or need help planning your trip? We'd love to hear from you.
+    </p>
+  
+    <div class="contact-box">
+  
+      <!-- LEFT FORM -->
+      <div class="form-card">
+        <h2>Send a Message</h2>
+        <p class="small-text">We usually respond within 24 hours.</p>
+  
+        <form (ngSubmit)="submitForm()">
+  
+          <label>Name</label>
+          <input type="text" [(ngModel)]="formData.name" name="name" placeholder="Your name" required>
+  
+          <label>Email</label>
+          <input type="email" [(ngModel)]="formData.email" name="email" placeholder="you@example.com" required>
+  
+          <label>Message</label>
+          <textarea [(ngModel)]="formData.message" name="message" placeholder="Tell us about your travel plans..."></textarea>
+  
+          <button type="submit">Send Message</button>
+  
+        </form>
+      </div>
+  
+      <!-- RIGHT INFO -->
+      <div class="info-card">
+        <div class="info-item">
+          📧 <div>
+            <strong>Email</strong>
+            <p>hello@travelvista.com</p>
+          </div>
+        </div>
+  
+        <div class="info-item">
+          📞 <div>
+            <strong>Phone</strong>
+            <p>+1 (555) 123-4567</p>
+          </div>
+        </div>
+  
+        <div class="info-item">
+          📍 <div>
+            <strong>Address</strong>
+            <p>123 Explorer Ave, Travel City</p>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>

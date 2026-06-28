@@ -1,0 +1,105 @@
+<div
+  class="details-page"
+  [ngStyle]="place?.image ? { '--details-bg': 'url(' + place?.image + ')' } : null"
+>
+  <ng-container *ngIf="place as p; else notFound">
+    <div class="details-card">
+      <div class="details-media">
+        <img [src]="p.image" [alt]="p.name" class="details-image" />
+      </div>
+
+      <div class="details-content">
+        <div class="details-top">
+          <a class="back-link" routerLink="/destinations">← Back to destinations</a>
+
+          <h1 class="details-title">{{ p.name }}</h1>
+
+          <div class="details-meta">
+            <span class="chip">{{ p.category }}</span>
+            <span class="chip chip-muted">Rating: {{ p.rating.toFixed(1) }}/5</span>
+          </div>
+
+          <div class="rating" aria-label="Rating stars">
+            <span *ngFor="let star of [1,2,3,4,5]" class="star" [class.filled]="star <= p.rating">
+              ★
+            </span>
+          </div>
+        </div>
+
+        <p class="details-description">
+          {{ p.description }}
+        </p>
+
+        <div class="states">
+          <div class="states-head">
+            <h3 class="states-title">States / Cities</h3>
+            <span class="states-hint" *ngIf="selectedState; else noSelection">
+              Selected: <strong>{{ selectedState.name }}</strong>
+            </span>
+            <ng-template #noSelection>
+              <span class="states-hint">Select a state to filter hotels</span>
+            </ng-template>
+          </div>
+
+          <div class="states-list">
+            <button
+              type="button"
+              class="state-chip"
+              *ngFor="let s of p.states"
+              (click)="selectState(s)"
+              [ngClass]="{ active: selectedState?.name === s.name }"
+            >
+              {{ s.name }}
+            </button>
+          </div>
+        </div>
+
+        <div class="hotels">
+          <h3 class="hotels-title">Hotels</h3>
+          <p class="hotels-sub">
+            {{ selectedState ? ('Showing hotels in ' + selectedState.name) : 'Showing popular hotels across the destination' }}
+          </p>
+
+          <div class="hotels-grid">
+            <div
+              class="hotel-card"
+              *ngFor="let h of hotelsToShow"
+              (click)="selectHotel(h)"
+              [ngClass]="{ active: selectedHotel?.name === h.name }"
+              role="button"
+              tabindex="0"
+            >
+              <div class="hotel-image" *ngIf="h.image; else noHotelImage">
+                <img [src]="h.image" [alt]="h.name" />
+              </div>
+              <ng-template #noHotelImage>
+                <div class="hotel-image placeholder" aria-hidden="true"></div>
+              </ng-template>
+
+              <div class="hotel-body">
+                <div class="hotel-top">
+                  <h4 class="hotel-name">{{ h.name }}</h4>
+                  <span class="hotel-rating">★ {{ h.rating.toFixed(1) }}</span>
+                </div>
+                <div class="hotel-price">₹ {{ h.price }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-actions">
+          <a class="btn btn-outline" routerLink="/destinations">Browse more</a>
+          <button type="button" class="btn btn-primary" (click)="bookNow()">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #notFound>
+    <div class="details-empty">
+      <h2>Destination not found</h2>
+      <p>Please go back and choose a destination again.</p>
+      <a class="btn btn-primary" routerLink="/destinations">Back to destinations</a>
+    </div>
+  </ng-template>
+</div>
